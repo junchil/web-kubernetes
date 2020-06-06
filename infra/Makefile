@@ -11,6 +11,7 @@ CURL                     	= curl -fSOL
 
 KUBECONFIG           = $(shell readlink -f kubeconfig.yaml)
 KUBECONFIGMAP        = $(shell readlink -f config_map_aws_auth.yaml)
+HELM_RBAC_FILE_PATH  = $(shell readlink -f $(TF_FOLDER)/cluster/init-cluster-setup/helm-rbac.yaml)
 
 # export as env-variable
 export KUBECONFIG
