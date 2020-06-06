@@ -41,7 +41,7 @@ jobs:
 
     # Deploy the infrastructure
     - stage: deployment
-      name: "🏖️ AWS: Apply changes to kubernetes infrastructure and update container images"
+      name: "🏖️ Branch manual deploy to AWS: Apply changes to kubernetes infrastructure and update container images"
       env:
         - SERVICE_DIR=infra
         - REGION=ap-southeast-2
@@ -51,11 +51,11 @@ jobs:
         - set -e # Stop script immediately on error
         - cd $SERVICE_DIR
         - make depend
-        - make deploy
+        - make deploy-terraform
       if: commit_message ="deploy-to-aws" AND type != pull_request
 
     - stage: deployment
-      name: "♨️ Destroy AWS: Destroy changes in sandbox env"
+      name: "♨️ Branch manual destroy AWS: Destroy changes in aws"
       env:
         - SERVICE_DIR=infra
         - REGION=ap-southeast-2
