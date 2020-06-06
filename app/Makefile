@@ -50,7 +50,7 @@ publish-docker: AWS_ECR_REPO_URI = $$(aws --region=$(AWS_REGION) ecr describe-re
 publish-docker: docker-tag
 	docker push $(AWS_ECR_REPO_URI):$(GIT_BRANCH_TAG)-$(COMMIT_HASH)
 
-publish: docker-repo publish-
+publish: docker-repo publish-docker
 
 check-image-exists:
 	@RESULT=$(shell aws ecr describe-images --repository-name $(ECR_REPO_NAME) --region $(AWS_REGION) --image-ids imageTag=$(COMMIT_HASH) | jq '.imageDetails[0].imageTags | index("$(GIT_BRANCH_TAG)-$(COMMIT_HASH)")'); \
