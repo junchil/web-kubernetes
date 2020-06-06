@@ -41,7 +41,7 @@ jobs:
 
     # Deploy the infrastructure
     - stage: deployment
-      name: "🏖️ SANDBOX: Apply changes to kubernetes infrastructure and update container images"
+      name: "🏖️ AWS: Apply changes to kubernetes infrastructure and update container images"
       env:
         - SERVICE_DIR=infra
         - REGION=ap-southeast-2
@@ -52,10 +52,10 @@ jobs:
         - cd $SERVICE_DIR
         - make depend
         - make deploy
-      if: commit_message ="deploy-to-sandbox" AND type != pull_request
+      if: commit_message ="deploy-to-aws" AND type != pull_request
 
     - stage: deployment
-      name: "♨️ Destroy SANDBOX: Destroy changes in sandbox env"
+      name: "♨️ Destroy AWS: Destroy changes in sandbox env"
       env:
         - SERVICE_DIR=infra
         - REGION=ap-southeast-2
@@ -66,4 +66,4 @@ jobs:
         - cd $SERVICE_DIR
         - make depend
         - make destroy-terraform
-      if: commit_message ="destroy-to-sandbox" AND type != pull_request
+      if: commit_message ="destroy-to-aws" AND type != pull_request
