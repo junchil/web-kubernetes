@@ -9,7 +9,7 @@ terraform {
 }
 
 module "vpc" {
-  source              = "git@github.com:junchil/aws-terraform//eks/vpc?ref=3752026"
+  source              = "./vpc"
   cidr                = "10.0.0.0/16"
   vpc_name            = var.vpc_name
   cluster_name        = module.eks.cluster-name
@@ -20,7 +20,7 @@ module "vpc" {
 }
 
 module "bastion-host" {
-  source                  = "git@github.com:junchil/aws-terraform//eks/bastion-host?ref=3752026"
+  source                  = "./bastion-host"
   instance_type           = var.instance_type
   instance_ami            = var.instance-ami
   server-name             = var.server-name
@@ -31,7 +31,7 @@ module "bastion-host" {
 }
 
 module "eks" {
-  source                        = "git@github.com:junchil/aws-terraform//eks/cluster?ref=3752026"
+  source                        = "./cluster"
   vpc_id                        = module.vpc.vpc_id
   cluster-name                  = var.cluster-name
   kubernetes-server-instance-sg = module.bastion-host.kubernetes-server-instance-sg
