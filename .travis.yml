@@ -27,6 +27,7 @@ script:
 # This governs the order of stage-execution
 stages:
   - name: build
+  - name: deployment
 
 jobs:
   include:
@@ -37,3 +38,32 @@ jobs:
         - TARGET_AWS_PROFILE=AWS_STEVE
         - COMMIT_HASH=${REA_APP_TAG}
       if: (branch = tag AND tag =~ /v\d+.\d+(.\d+)?/) OR (branch != tag)
+
+    # Deploy the infrastructure
+    - stage: deployment
+      name: "🏖️ Branch manual deploy to AWS: Apply changes to kubernetes infrastructure and update container images"
+      env:
+        - SERVICE_DIR=infra
+        - REGION=ap-southeast-2
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      script:
+        - set -e # Stop script immediately on error
+        - cd $SERVICE_DIR
+        - make depend
+        - make deploy-terraform
+      if: commit_message ="deploy-to-aws" AND type != pull_request
+
+    - stage: deployment
+      name: "♨️ Branch manual destroy AWS: Destroy changes in aws"
+      env:
+        - SERVICE_DIR=infra
+        - REGION=ap-southeast-2
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      script:
+        - set -e # Stop script immediately on error
+        - cd $SERVICE_DIR
+        - make depend
+        - make destroy-terraform
+      if: commit_message ="destroy-to-aws" AND type != pull_request
