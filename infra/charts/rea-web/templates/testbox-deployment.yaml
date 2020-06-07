@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rea-web
+  name: testbox
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: rea-web
+      app: testbox
   template:
     metadata:
       labels:
-        app: rea-web
+        app: testbox
     spec:
       containers:
-      - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-web-app:WEBKUBE-0003-Add-helm-chart-rc-bda8365
+      - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-testbox:WEBKUBE-0003-Add-helm-chart_PR-rc-bda8365
         imagePullPolicy: Always
-        name: rea-web
+        name: testbox
         ports:
         - containerPort: 9292
