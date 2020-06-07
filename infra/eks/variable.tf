@@ -38,3 +38,7 @@ variable "vpc_name" {
   description = "VPC name"
   default     = "reaVpc"
 }
+
+variable "ingress_url" {
+  default = "reaapp.codingchallenge.com.au"
+}

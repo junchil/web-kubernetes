@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    external-dns.alpha.kubernetes.io/hostname: reaapp.codingchallenge.com.au
+    kubernetes.io/ingress.class: alb
+  name: rea-app
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: rea-app
+          servicePort: 80
+        path: /

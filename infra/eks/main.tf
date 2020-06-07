@@ -39,3 +39,17 @@ module "eks" {
   worker_subnet                 = flatten([module.vpc.worker_node_subnet])
   subnet_ids                    = flatten([module.vpc.master_subnet, module.vpc.worker_node_subnet])
 }
+
+resource "aws_acm_certificate" "cert" {
+  // has to be a wildcard all of the subdomains should be certified
+  domain_name       = "*.${var.ingress_url}"
+  validation_method = "DNS"
+
+  tags = {
+    Name        = variable.cluster-name
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
