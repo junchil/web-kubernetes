@@ -16,5 +16,5 @@ spec:
       - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-testbox:WEBKUBE-0003-Add-helm-chart_PR-rc-bda8365
         imagePullPolicy: Always
         name: testbox
-        ports:
-        - containerPort: 9292
+        command: ["/bin/bash"]    # required to stop early exit
+        stdin: true               # required to stop early exit

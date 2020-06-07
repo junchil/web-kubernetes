@@ -1,4 +1,4 @@
 require 'sinatra'
 get '/' do
-  "Hello World!"
+  "Love Skylar Qi from Steve Liu!"
 end
