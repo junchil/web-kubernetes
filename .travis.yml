@@ -33,7 +33,7 @@ stages:
 jobs:
   include:
     - stage: build
-      name: "✍️ REA WEB Server: Build, test and publish the image"
+      name: "✍️ REA WEB SERVER: Build, test and publish the image"
       env:
         - SERVICE_DIR=app
         - TARGET_AWS_PROFILE=AWS_STEVE
@@ -41,7 +41,7 @@ jobs:
       if: (branch = tag AND tag =~ /v\d+.\d+(.\d+)?/) OR (branch != tag)
     
     - stage: build
-      name: "✍️ REA TESTBOX: Build, test and publish the image"
+      name: "✍️ TESTBOX: Build, test and publish the image"
       env:
         - SERVICE_DIR=testbox
         - TARGET_AWS_PROFILE=AWS_STEVE
@@ -60,7 +60,7 @@ jobs:
         - set -e # Stop script immediately on error
         - cd $SERVICE_DIR
         - make depend
-        - make deploy-terraform
+        - make deploy
       if: commit_message ="deploy-to-aws" AND type != pull_request
 
     - stage: deployment
