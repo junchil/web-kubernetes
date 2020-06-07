@@ -113,6 +113,52 @@ data "aws_iam_policy_document" "worker-node-policy" {
     ]
   }
 
+  statement {
+    actions = [
+      "iam:CreateServiceLinkedRole",
+      "iam:GetServerCertificate",
+      "iam:ListServerCertificates",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+
+  statement {
+    actions = [
+      "waf-regional:GetWebACLForResource",
+      "waf-regional:GetWebACL",
+      "waf-regional:AssociateWebACL",
+      "waf-regional:DisassociateWebACL",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+
+  statement {
+    actions = [
+      "tag:GetResources",
+      "tag:TagResources",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+
+  statement {
+    actions = [
+      "waf:GetWebACL",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+
   # worker node Route 53 policy
   statement {
     actions = [
