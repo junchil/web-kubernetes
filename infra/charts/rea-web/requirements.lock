@@ -1,0 +1,9 @@
+dependencies:
+- name: aws-alb-ingress-controller
+  repository: http://storage.googleapis.com/kubernetes-charts-incubator
+  version: 0.1.13
+- name: external-dns
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 2.20.3
+digest: sha256:4b23f1b7f448c6812843ebc860ab6c041bb488ca542ec3f197969cdd36c8fc86
+generated: "2020-06-07T19:45:13.372793+10:00"

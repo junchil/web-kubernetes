@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: testbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: testbox
+  template:
+    metadata:
+      labels:
+        app: testbox
+    spec:
+      containers:
+      - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-testbox:latest
+        imagePullPolicy: Always
+        name: testbox
+        command: ["/bin/bash"]    # required to stop early exit
+        stdin: true               # required to stop early exit

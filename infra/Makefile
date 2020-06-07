@@ -1,5 +1,5 @@
-RELEASE_NAME             = rea-app
-CHART_PATH               = rea-app
+RELEASE_NAME             = rea-web-release
+CHART_PATH               = rea-web
 TF_FOLDER            	 = eks
 APPS                 	 = terraform kubectl helm aws aws-iam-authenticator
 
@@ -80,10 +80,12 @@ destroy-terraform:
 deploy-charts-init:
 	helm init --service-account tiller --client-only
 
-# deploy-charts:
-# 	@echo Deploying charts#
-# 	@cd chart && \
-# 	echo "Deploying rea app chart" && \
-# 	helm upgrade $(RELEASE_NAME) $(CHART_PATH) --install
+deploy-charts:
+	@echo Deploying charts
+	@cd charts && \
+	helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator && \
+	helm dependency update $(CHART_PATH) && \
+	echo "Deploying rea app chart" && \
+	helm upgrade $(RELEASE_NAME) $(CHART_PATH) --install
 
-#deploy: deploy-terraform deploy-charts-init deploy-charts
+deploy: deploy-terraform deploy-charts-init deploy-charts

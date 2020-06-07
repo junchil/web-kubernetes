@@ -1,5 +1,5 @@
 # APPNAME is used for the generated executable and as part of the docker image name
-APPNAME=rea-web-app
+APPNAME=rea-testbox
 # PREFIX is prepended to the docker image name before NAME
 PREFIX=web-kubernetes/
 # PROJECT_PKG is the Go import path of the top level of the project
