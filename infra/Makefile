@@ -81,8 +81,8 @@ deploy-charts-init:
 	helm init --service-account tiller --client-only
 
 deploy-charts:
-	@echo Deploying charts#
-	@cd chart && \
+	@echo Deploying charts
+	@cd charts && \
 	helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator && \
 	helm dependency update $(CHART_PATH) && \
 	echo "Deploying rea app chart" && \
