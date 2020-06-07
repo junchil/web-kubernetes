@@ -162,21 +162,6 @@ data "aws_iam_policy_document" "worker-node-policy" {
       "*",
     ]
   }
-
-  # worker node S3 policy to store logs
-  statement {
-    actions = [
-      "s3:ListBucket",
-      "s3:PutObject",
-      "s3:GetObject",
-    ]
-
-    resources = [
-      "arn:aws:s3:::${var.cluster_logs_bucket}",
-      "arn:aws:s3:::${var.cluster_logs_bucket}/*",
-    ]
-  }
-
 }
 
 resource "aws_iam_policy" "worker-node-policy" {
