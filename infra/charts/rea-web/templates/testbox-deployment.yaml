@@ -13,7 +13,7 @@ spec:
         app: testbox
     spec:
       containers:
-      - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-testbox:WEBKUBE-0003-Add-helm-chart_PR-rc-bda8365
+      - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-testbox:latest
         imagePullPolicy: Always
         name: testbox
         command: ["/bin/bash"]    # required to stop early exit

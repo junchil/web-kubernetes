@@ -13,7 +13,7 @@ spec:
         app: rea-web
     spec:
       containers:
-      - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-web-app:WEBKUBE-0003-Add-helm-chart_PR-rc-d7ac270
+      - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-web-app:latest
         imagePullPolicy: Always
         name: rea-web
         ports:

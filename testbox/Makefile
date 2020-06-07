@@ -44,11 +44,13 @@ docker-build: docker-login
 	docker tag $(ECR_REPO_NAME):$(COMMIT_HASH) $(ECR_REPO_NAME):latest
 
 docker-tag: docker-build
-	docker tag $(ECR_REPO_NAME):$(COMMIT_HASH) $(AWS_ECR_REPO_URI):$(GIT_BRANCH_TAG)-$(COMMIT_HASH)
+	docker tag $(ECR_REPO_NAME):$(COMMIT_HASH) $(AWS_ECR_REPO_URI):$(COMMIT_HASH) && \
+	docker tag $(ECR_REPO_NAME):$(COMMIT_HASH) $(AWS_ECR_REPO_URI):$(GIT_BRANCH_TAG)
 
 publish-docker: AWS_ECR_REPO_URI = $$(aws --region=$(AWS_REGION) ecr describe-repositories --repository-names "$(ECR_REPO_NAME)" | jq -r '.repositories[0].repositoryUri')
 publish-docker: docker-tag
-	docker push $(AWS_ECR_REPO_URI):$(GIT_BRANCH_TAG)-$(COMMIT_HASH)
+	docker push $(AWS_ECR_REPO_URI):$(COMMIT_HASH) && \
+	docker push $(AWS_ECR_REPO_URI):$(GIT_BRANCH_TAG)
 
 publish: docker-repo publish-docker
 
