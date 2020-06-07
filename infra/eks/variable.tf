@@ -40,5 +40,5 @@ variable "vpc_name" {
 }
 
 variable "ingress_url" {
-  default = "reaappcodingchallenge.com.au"
+  default = "stevejcliu.com.au"
 }

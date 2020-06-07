@@ -37,7 +37,7 @@ externaldns:
   provider: aws
   domainFilters:
     # List of the domains that external-dns has to watch, Route 53 should be prepared before setting this up
-    - reaappcodingchallenge.com.au
+    - stevejcliu.com.au
   policy: sync
   rbac:
     create: true
