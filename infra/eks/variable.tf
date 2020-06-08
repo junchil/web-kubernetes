@@ -40,5 +40,5 @@ variable "vpc_name" {
 }
 
 variable "ingress_url" {
-  default = "stevejcliu.com.au"
+  default = "stevejcliu.com"
 }
