@@ -9,3 +9,9 @@ dependencies:
   repository: https://kubernetes-charts.storage.googleapis.com/
   alias: externaldns
   condition: externaldns.enabled
+
+- name: nginx-ingress
+  version: 1.33.5
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  alias: nginx
+  condition: nginx.enabled
