@@ -42,7 +42,7 @@ variable "kubernetes-server-instance-sg" {
 }
 
 variable "worker_node_instance_type" {
-  default = "t2.micro"
+  default = "t2.small"
 }
 
 variable "worker_node_instance_type_override" {
@@ -56,11 +56,11 @@ variable "worker_node_autoscaling" {
 }
 
 variable "worker_node_count_max" {
-  default = 4
+  default = 8
 }
 
 variable "worker_node_count_min" {
-  default = 4
+  default = 8
 }
 
 variable "worker_node_on_demand_base_capacity" {
