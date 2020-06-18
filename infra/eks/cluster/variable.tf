@@ -6,7 +6,7 @@ variable "cluster-name" {
 
 variable "cluster_version" {
   description = "EKS cluster version. E.g. 1.11, 1.12"
-  default     = "1.15"
+  default     = "1.16"
 }
 
 variable "cluster_name_override" {
