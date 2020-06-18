@@ -34,8 +34,8 @@ depend-kubernetes-client:
 
 depend-helm-client: depend-kubernetes-client
 	@echo "Installing helm-client"
-	$(CURL) https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERS}-linux-amd64.tar.gz && \
-	tar -zxvf "helm-v${HELM_VERS}-linux-amd64.tar.gz" && \
+	curl -fSL https://get.helm.sh/helm-v${HELM_VERS}-linux-amd64.tar.gz -o helm-linux-amd64.tar.gz && \
+	tar -zxvf helm-linux-amd64.tar.gz && \
 	install linux-amd64/helm $(LOCAL_BIN) && \
 	rm -rf "helm-v${HELM_VERS}-linux-amd64.tar.gz" linux-amd64
 
