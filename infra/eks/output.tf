@@ -13,3 +13,10 @@ output "Kubenetes-server-ip" {
 output "cluster-name" {
   value = module.eks.cluster-name
 }
+
+output "helm_values" {
+  value = <<EOF
+  certificateArn: ${aws_acm_certificate.cert.arn}
+  EOF
+
+}

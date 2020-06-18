@@ -5,9 +5,9 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     external-dns.alpha.kubernetes.io/hostname: web.stevejcliu.com
     kubernetes.io/ingress.class: alb
-    #alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
-    #alb.ingress.kubernetes.io/ssl-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
-    #alb.ingress.kubernetes.io/certificate-arn: "arn:aws:acm:ap-southeast-2:675617749633:certificate/644de597-9402-42bd-8efd-83be4637aec7"
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+    alb.ingress.kubernetes.io/ssl-policy: "ELBSecurityPolicy-TLS-1-2-2017-01"
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.certificateArn | quote }}
   name: "{{ .Release.Name }}-elb-ingress"
 spec:
   rules:
