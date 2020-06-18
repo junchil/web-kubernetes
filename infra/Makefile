@@ -5,7 +5,7 @@ APPS                 	 = terraform kubectl helm aws aws-iam-authenticator
 
 TF_VERS                 	?= 0.12.24
 KUBECTL_VERS            	?= 1.16.0
-HELM_VERS               	?= 2.16.1
+HELM_VERS               	?= 3.2.4
 LOCAL_BIN               	?= $(HOME)/bin
 CURL                     	= curl -fSOL
 
@@ -77,9 +77,6 @@ destroy-terraform:
 		echo "Terraform changes are destroyed successfully" \
 	)
 
-deploy-charts-init:
-	helm init --service-account tiller --client-only
-
 deploy-charts:
 	@echo Deploying charts
 	@cd charts && \
@@ -88,4 +85,4 @@ deploy-charts:
 	echo "Deploying rea app chart" && \
 	helm upgrade $(RELEASE_NAME) $(CHART_PATH) --install
 
-deploy: deploy-terraform deploy-charts-init deploy-charts
+deploy: deploy-terraform deploy-charts
