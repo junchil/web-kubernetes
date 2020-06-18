@@ -54,3 +54,5 @@ nginx:
       targetPorts:
         http: 80
         https: 80
+
+certificateArn: ""

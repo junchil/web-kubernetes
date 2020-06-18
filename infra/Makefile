@@ -11,6 +11,7 @@ CURL                     	= curl -fSOL
 
 KUBECONFIG           = $(shell readlink -f kubeconfig.yaml)
 KUBECONFIGMAP        = $(shell readlink -f config_map_aws_auth.yaml)
+HELM_ENV_VALUES		 = $(shell readlink -f helm_env_values.yaml)
 HELM_RBAC_FILE_PATH  = $(shell readlink -f $(TF_FOLDER)/cluster/init-cluster-setup/helm-rbac.yaml)
 
 # export as env-variable
@@ -83,6 +84,7 @@ deploy-charts:
 	helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator && \
 	helm dependency update $(CHART_PATH) && \
 	echo "Deploying rea app chart" && \
-	helm upgrade $(RELEASE_NAME) $(CHART_PATH) --install
+	helm upgrade $(RELEASE_NAME) $(CHART_PATH) --install -f $(HELM_ENV_VALUES) && \
+	rm $(HELM_ENV_VALUES)
 
 deploy: deploy-terraform deploy-charts
