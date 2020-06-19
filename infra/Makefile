@@ -1,4 +1,4 @@
-RELEASE_NAME             = rea-web-release
+RELEASE_NAME             = reawebrelease
 CHART_PATH               = rea-web
 TF_FOLDER            	 = eks
 APPS                 	 = terraform kubectl helm aws aws-iam-authenticator
