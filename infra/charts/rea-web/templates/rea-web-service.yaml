@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rea-web
+  name: {{ .Release.Name }}-rea-web
 spec:
   ports:
     - port: 80
@@ -9,4 +9,4 @@ spec:
       protocol: TCP
   type: NodePort
   selector:
-    app: rea-web
+    app: {{ .Release.Name }}-rea-web
