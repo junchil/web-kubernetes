@@ -7,11 +7,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-testbox
+      app: testbox
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-testbox
+        app: testbox
     spec:
       containers:
       - name: testbox
