@@ -15,5 +15,5 @@ spec:
       #     servicePort: use-annotation
       - path: /*
         backend:
-          serviceName: rea-web
+          serviceName: {{ .Release.Name }}-rea-web
           servicePort: 80

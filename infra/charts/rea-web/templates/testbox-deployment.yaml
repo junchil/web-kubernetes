@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: testbox
+  name: {{ .Release.Name }}-testbox
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: testbox
+      app: {{ .Release.Name }}-testbox
   template:
     metadata:
       labels:
-        app: testbox
+        app: {{ .Release.Name }}-testbox
     spec:
       containers:
       - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-testbox:latest
