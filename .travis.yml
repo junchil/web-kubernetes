@@ -48,7 +48,7 @@ jobs:
         - COMMIT_HASH=${TESTBOX_TAG}
       if: (branch = tag AND tag =~ /v\d+.\d+(.\d+)?/) OR (branch != tag)
 
-    # Deploy the infrastructure
+    # Deploy the infrastructure, use for branch
     - stage: deployment
       name: "🏖️ Branch manual deploy to AWS: Apply changes to kubernetes infrastructure and update container images"
       env:
@@ -62,6 +62,21 @@ jobs:
         - make depend
         - make deploy
       if: commit_message ="deploy-to-aws" AND type != pull_request
+
+    # Deploy the infrastructure, use for master
+    - stage: deployment
+      name: "🏖️ Branch manual deploy to AWS: Apply changes to kubernetes infrastructure and update container images"
+      env:
+        - SERVICE_DIR=infra
+        - REGION=ap-southeast-2
+        - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+        - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      script:
+        - set -e # Stop script immediately on error
+        - cd $SERVICE_DIR
+        - make depend
+        - make deploy
+      if: branch = master AND type != pull_request AND commit_message !="deploy-to-aws"
 
     - stage: deployment
       name: "♨️ Branch manual destroy AWS: Destroy changes in aws"
