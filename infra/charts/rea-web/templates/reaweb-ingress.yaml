@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: {{ .Release.Name }}-rea-web
+  name: {{ .Release.Name }}-reaweb
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
@@ -19,5 +19,5 @@ spec:
           servicePort: use-annotation
       - path: /*(/|$)(.*)
         backend:
-          serviceName: {{ .Release.Name }}-rea-web
+          serviceName: {{ .Release.Name }}-reaweb
           servicePort: 80

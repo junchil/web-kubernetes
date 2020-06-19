@@ -1,20 +1,28 @@
+{{- if .Values.testBox.enabled -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}-testbox
+  labels:
+    app.kubernetes.io/name: testbox
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Release.Name }}-testbox
+      app.kubernetes.io/name: testbox
+      app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       labels:
-        app: {{ .Release.Name }}-testbox
+        app.kubernetes.io/name: testbox
+        app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       containers:
-      - image: 675617749633.dkr.ecr.ap-southeast-2.amazonaws.com/web-kubernetes/rea-testbox:latest
-        imagePullPolicy: Always
-        name: testbox
+      - name: testbox
+        image: "{{ .Values.testBox.image.repository }}:{{ .Values.testBox.image.tag }}"
+        imagePullPolicy: {{ .Values.testBox.image.pullPolicy }}
         command: ["/bin/bash"]    # required to stop early exit
         stdin: true               # required to stop early exit
+{{- end -}}
