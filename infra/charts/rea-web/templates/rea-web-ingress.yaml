@@ -13,7 +13,7 @@ spec:
       #   backend:
       #     serviceName: ssl-redirect
       #     servicePort: use-annotation
-      - path: /*
+      - path: /*(/|$)(.*)
         backend:
           serviceName: {{ .Release.Name }}-rea-web
           servicePort: 80

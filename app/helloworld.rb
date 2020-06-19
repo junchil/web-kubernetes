@@ -12,7 +12,7 @@ get '/preface.htm' do
   File.read(File.join('public', 'preface.html'))
 end
 
-get '/acknow.htm' do
+get '/acknowl.htm' do
   File.read(File.join('public', 'acknowl.html'))
 end
 
