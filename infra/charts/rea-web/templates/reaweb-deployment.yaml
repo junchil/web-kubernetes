@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - image: "{{ .Values.reaweb.image.repository }}:{{ .Values.reaweb.image.tag }}"
-        imagePullPolicy: {{ .Values.testBox.image.pullPolicy }}
+        imagePullPolicy: {{ .Values.reaweb.image.pullPolicy }}
         name: reaweb
         ports:
         - containerPort: 9292

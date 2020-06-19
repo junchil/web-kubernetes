@@ -56,16 +56,16 @@ variable "worker_node_autoscaling" {
 }
 
 variable "worker_node_count_max" {
-  default = 2
+  default = 3
 }
 
 variable "worker_node_count_min" {
-  default = 2
+  default = 3
 }
 
 variable "worker_node_on_demand_base_capacity" {
   description = "Absolute minimum amount of desired capacity that must be fulfilled by on-demand instances. Default: 0"
-  default     = 2
+  default     = 3
 }
 
 variable "worker_node_on_demand_percentage_above_base_capacity" {
