@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: {{ .Release.Name }}-testbox
 spec:
-  replicas: 1
+  replicas: {{ .Values.testBox.replicas }}
   selector:
     matchLabels:
       app: testbox
