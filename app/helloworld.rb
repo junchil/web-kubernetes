@@ -1,6 +1,6 @@
 require 'sinatra'
 
-get '/contents.htm' do
+get '/' do
   File.read(File.join('public', 'contents.html'))
 end
 
