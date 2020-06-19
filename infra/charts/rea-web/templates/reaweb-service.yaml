@@ -9,4 +9,4 @@ spec:
       protocol: TCP
   type: NodePort
   selector:
-    app: {{ .Release.Name }}-reaweb
+    app: reaweb
