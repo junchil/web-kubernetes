@@ -56,11 +56,11 @@ variable "worker_node_autoscaling" {
 }
 
 variable "worker_node_count_max" {
-  default = 3
+  default = 2
 }
 
 variable "worker_node_count_min" {
-  default = 3
+  default = 2
 }
 
 variable "worker_node_on_demand_base_capacity" {
