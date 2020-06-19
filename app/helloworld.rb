@@ -47,3 +47,8 @@ end
 get '/ch8.htm' do
   File.read(File.join('public', 'ch8.html'))
 end
+
+get '/warning.htm' do
+  "A custom warning page should be returned, informing the perpetrator of the Command's 
+  decision to withhold the matters of Chapter 8 from public concern"
+end
