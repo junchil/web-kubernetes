@@ -55,6 +55,46 @@ Bastion host:
 
 ![alb-nginx-ingress](doc/webdiagram.png)
 
+```
+kubectl get po
+NAME                                                  READY   STATUS    RESTARTS   AGE
+reawebrelease-albcontroller-64bc5d66b9-6sjs8          1/1     Running   0          13h
+reawebrelease-externaldns-6bd6fb5cf7-zwcwl            1/1     Running   0          13h
+reawebrelease-nginx-controller-7f557dfcf9-b2xxh       1/1     Running   0          157m
+reawebrelease-nginx-default-backend-7569d789f-vsjcm   1/1     Running   0          13h
+reawebrelease-reaweb-5dd9d87b77-hsvp5                 1/1     Running   0          157m
+reawebrelease-reaweb-5dd9d87b77-xgg24                 1/1     Running   0          13h
+reawebrelease-testbox-67d8cd9c6-nmn87                 1/1     Running   0          13h
+```
+
+```
+kubectl get deploy
+NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
+reawebrelease-albcontroller           1/1     1            1           14h
+reawebrelease-externaldns             1/1     1            1           14h
+reawebrelease-nginx-controller        1/1     1            1           14h
+reawebrelease-nginx-default-backend   1/1     1            1           14h
+reawebrelease-reaweb                  2/2     2            2           14h
+reawebrelease-testbox                 1/1     1            1           14h
+```
+
+```
+kubectl get svc
+NAME                                  TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                      AGE
+kubernetes                            ClusterIP   172.20.0.1       <none>        443/TCP                      40h
+reawebrelease-externaldns             ClusterIP   172.20.161.112   <none>        7979/TCP                     13h
+reawebrelease-nginx-controller        NodePort    172.20.208.243   <none>        80:30959/TCP,443:30307/TCP   13h
+reawebrelease-nginx-default-backend   ClusterIP   172.20.32.31     <none>        80/TCP                       13h
+reawebrelease-reaweb                  NodePort    172.20.54.40     <none>        9292:31678/TCP               13h
+```
+
+```
+kubectl get ingress
+NAME                        HOSTS   ADDRESS                                                                       PORTS   AGE
+reawebrelease-elb-ingress   *       ac97d66b-default-reawebrel-8f71-1282660860.ap-southeast-2.elb.amazonaws.com   80      14h
+reawebrelease-reaweb        *       10.0.148.82
+```
+
 ## Reference
 
 1. https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/
