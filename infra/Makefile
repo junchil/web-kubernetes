@@ -12,7 +12,6 @@ CURL                     	= curl -fSOL
 KUBECONFIG           = $(shell readlink -f kubeconfig.yaml)
 KUBECONFIGMAP        = $(shell readlink -f config_map_aws_auth.yaml)
 HELM_VALUES          = $(shell readlink -f helm_values.$(ENVIRONMENT_NAME).yaml)
-HELM_RBAC_FILE_PATH  = $(shell readlink -f $(TF_FOLDER)/cluster/init-cluster-setup/helm-rbac.yaml)
 
 # export as env-variable
 export KUBECONFIG
@@ -60,15 +59,8 @@ deploy-terraform:
 	terraform output config_map_aws_auth > "$(KUBECONFIGMAP)" && \
 	terraform output helm_values > "$(HELM_VALUES)" && \
 	echo "Terraform changes are applied successfully" \
-	) || exit 1; \
-	if helm version > /dev/null ; \
-		then echo "Cluster has been initialized before"; \
-		else \
-			echo "Initializing the cluster ..."; \
-			kubectl apply -f $(KUBECONFIGMAP) && \
-			kubectl apply -f $(HELM_RBAC_FILE_PATH) && \
-			helm init --service-account tiller --wait; \
-		fi
+	) || exit 1;
+	kubectl apply -f $(KUBECONFIGMAP)
 
 deploy-charts:
 	@echo Deploying charts
