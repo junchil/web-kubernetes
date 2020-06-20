@@ -53,7 +53,7 @@ Bastion host:
 - Hostname -> routing rules
 - Can support multiple ingress class
 
-![alb-nginx-ingress](doc/web-diagram.png)
+![alb-nginx-ingress](doc/webdiagram.png)
 
 ## Reference
 
