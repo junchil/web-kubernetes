@@ -64,6 +64,10 @@ get '/ch12.htm' do
   File.read(File.join('public', 'ch12.html'))
 end
 
+get '/ch13.htm' do
+  File.read(File.join('public', 'ch13.html'))
+end
+
 get '/app-a.htm' do
   File.read(File.join('public', 'app-a.html'))
 end
