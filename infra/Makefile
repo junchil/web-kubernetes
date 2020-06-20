@@ -81,7 +81,8 @@ deploy-charts:
 deploy: deploy-terraform deploy-charts
 
 destroy-charts:
-	helm uninstall $(RELEASE_NAME)
+	helm uninstall $(RELEASE_NAME) && \
+	echo "Helm changes are destroyed successfully"
 
 destroy-terraform:
 	@echo Destroying all resources created by terraform

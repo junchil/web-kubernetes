@@ -17,4 +17,4 @@ Steps:
 
 3. Also you can deploy a specific branch by using custom commit message "deploy-to-aws" in travis to trigger a deployment. https://travis-ci.org/github/junchil/web-kubernetes/builds/699887456
 
-4. For destroying all the aws resources, you can use custom commit message "destroy-to-aws" in travis.
+4. For destroying all the aws resources, you can use custom commit message "destroy-to-aws" in travis. https://travis-ci.org/github/junchil/web-kubernetes/builds/700291053
