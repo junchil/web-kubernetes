@@ -13,9 +13,9 @@ Table of Contents
 * [Set up](SETUP.md)
 * [CICD](CICD.md)
 * [EKS Cluster](#eks-cluster)
-* [Web Diagram](#web-diagram)
+* [Helm Charts](#helm-charts)
 * [Reference](#reference)
-* [To Do](#to-do)
+* [To Do](TODO.md)
 
 ## EKS Cluster
 
@@ -30,6 +30,8 @@ VPC:
 * Amazon [EKS](https://aws.amazon.com/eks/) is using both master subnets and worker subnets.
 * Kubernetes worker nodes sit in worker subnets.
 
+![diagram](doc/vpc.PNG)
+
 Cluster:
 
 * Kubernetes worker nodes are using [Auto Scaling Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html). It also supports [Spot Instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances.html).
@@ -39,11 +41,15 @@ Bastion host:
 * [Bastion host](https://docs.aws.amazon.com/quickstart/latest/linux-bastion/architecture.html) is a single vm which sits in the public subnets. It is used for managing the kubernetes work nodes if there is a need.
 * SSH port 22 is enabled in bastion host vm.
 
-## Web Diagram
+![diagram](doc/ec2.PNG)
 
-- Auto DNS entry with `externalDns`
-- SSL termination at ALB
-- Wildcard ingress 
+
+## Helm charts
+
+- Kubernetes ingress resources by provisioning Application Load Balancers with [aws-alb-ingress-controller](https://github.com/helm/charts/tree/master/incubator/aws-alb-ingress-controller)
+- Auto DNS entry with [external-dns](https://github.com/helm/charts/tree/master/stable/external-dns)
+- Ingress controller that uses ConfigMap to store the nginx configuration. [nginx-ingress](https://github.com/helm/charts/tree/master/stable/nginx-ingress)
+- SSL Enable
 - Hostname -> routing rules
 - Can support multiple ingress class
 
@@ -62,5 +68,3 @@ Bastion host:
 5. https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/alb-ingress.md
 
 6. https://medium.com/@sajid2045/aws-eks-ingress-option-alb-nginx-fc64a4a5ea9f
-
-## To Do
