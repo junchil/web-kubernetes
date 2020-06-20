@@ -48,6 +48,71 @@ get '/ch8.htm' do
   File.read(File.join('public', 'ch8.html'))
 end
 
+get '/ch9.htm' do
+  File.read(File.join('public', 'ch9.html'))
+end
+
+get '/ch10.htm' do
+  File.read(File.join('public', 'ch10.html'))
+end
+
+get '/ch11.htm' do
+  File.read(File.join('public', 'ch11.html'))
+end
+
+get '/ch12.htm' do
+  File.read(File.join('public', 'ch12.html'))
+end
+
+get '/app-a.htm' do
+  File.read(File.join('public', 'app-a.html'))
+end
+
+get '/app-b.htm' do
+  File.read(File.join('public', 'app-b.html'))
+end
+
+get '/app-c.htm' do
+  File.read(File.join('public', 'app-c.html'))
+end
+
+get '/app-d.htm' do
+  File.read(File.join('public', 'app-d.html'))
+end
+
+get '/app-e.htm' do
+  File.read(File.join('public', 'app-e.html'))
+end
+
+
+get '/app-f.htm' do
+  File.read(File.join('public', 'app-f.html'))
+end
+
+get '/app-g.htm' do
+  File.read(File.join('public', 'app-g.html'))
+end
+
+get '/app-h.htm' do
+  File.read(File.join('public', 'app-h.html'))
+end
+
+get '/notes.htm' do
+  File.read(File.join('public', 'notes.html'))
+end
+
+get '/sources.htm' do
+  File.read(File.join('public', 'sources.html'))
+end
+
+get '/index.htm' do
+  File.read(File.join('public', 'index.html'))
+end
+
+get '/author.htm' do
+  File.read(File.join('public', 'author.html'))
+end
+
 get '/warning.htm' do
   "A custom warning page should be returned, informing the perpetrator of the Command's 
   decision to withhold the matters of Chapter 8 from public concern"
