@@ -5,7 +5,7 @@
 
 Host web application inside AWS EKS cluster using ALB + NGINX. The web link: https://web.stevejcliu.com/
 
-This repo builds a CICD pipeline for depolying a web application into EKS cluster. There is no manual task needed during this CICD process. The related travis build can be found through the build status.
+This repo builds a CICD pipeline for depolying this web application into EKS cluster. There is no manual task needed during this CICD process. The related travis build can be found through the build status.
 
 Table of Contents                                                                                                                       
 ============================================
