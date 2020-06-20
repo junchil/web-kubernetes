@@ -3,7 +3,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/junchil/web-kubernetes?color=%2300ADD8)](https://github.com/junchil/web-kubernetes/releases)
 [![Build Status](https://travis-ci.org/junchil/web-kubernetes.svg?branch=master)](https://travis-ci.org/junchil/web-kubernetes) 
 
-Host web application inside EKS cluster using ALB + NGINX
+Host web application inside EKS cluster using ALB + NGINX. The web link: https://web.stevejcliu.com/
 
 This repo builds a CICD pipeline for depolying a web application into EKS cluster. There is no manual task needed during this CICD process. The related travis build can be found through the build status.
 
@@ -53,10 +53,21 @@ An overview of what each of these does:
 
 | File | Description |
 | -------- | ----------- |
-| `book.json` | Stores [configuration](config.md) data (__optional__) |
-| `README.md` | Preface / Introduction for your book (**required**) |
-| `SUMMARY.md` | Table of Contents (See [Pages](pages.md)) (__optional__) |
-| `GLOSSARY.md` | Lexicon / List of terms to annotate (See [Glossary](lexicon.md)) (__optional__) |
+| `app/` | Web applicaton |
+| `doc/` | README pictures |
+| `infra/` | Terraform and Helm code |
+| `charts/` | Helm code |
+| `rea-web/` | Web applications helm charts |
+| `eks/` | Terraform code |
+| `bastion-host` | Terraform code for setup bastion host |
+| `cluster` | Terraform code for setup eks cluster |
+| `vpc` | Terraform code for setup vpc |
+| `terraform-state` | Terraform code for setup terraform remote state |
+| `Makefile` | Deployment code for terraform and helm |
+| `ssh-key` | Public key for bastion host ssh key |
+| `testbox` | Simple linux box for testing web service in cluster |
+| `Makefile` | Copy ssh key and setup AWS credentials |
+| `.travis.yml` | Travis configuration file |
 
 ## Web Diagram
 
