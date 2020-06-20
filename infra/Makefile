@@ -70,15 +70,6 @@ deploy-terraform:
 			helm init --service-account tiller --wait; \
 		fi
 
-destroy-terraform:
-	@echo Destroying all resources created by terraform
-	cd $(TF_FOLDER) && \
-	( \
-		terraform init && \
-		terraform destroy -auto-approve -force && \
-		echo "Terraform changes are destroyed successfully" \
-	)
-
 deploy-charts:
 	@echo Deploying charts
 	@cd charts && \
@@ -88,3 +79,17 @@ deploy-charts:
 	helm upgrade $(RELEASE_NAME) $(CHART_PATH) --install -f $(HELM_VALUES)
 
 deploy: deploy-terraform deploy-charts
+
+destroy-charts:
+	helm uninstall $(RELEASE_NAME)
+
+destroy-terraform:
+	@echo Destroying all resources created by terraform
+	cd $(TF_FOLDER) && \
+	( \
+		terraform init && \
+		terraform destroy -auto-approve -force && \
+		echo "Terraform changes are destroyed successfully" \
+	)
+
+destroy: deploy-terraform destroy-charts destroy-terraform

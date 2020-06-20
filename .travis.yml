@@ -76,7 +76,7 @@ jobs:
         - cd $SERVICE_DIR
         - make depend
         - make deploy
-      if: branch = master AND type != pull_request AND commit_message !="deploy-to-aws"
+      if: branch = master AND type != pull_request AND commit_message !="deploy-to-aws" AND commit_message !="destroy-to-aws"
 
     # Deploy the infrastructure, use for new release
     - stage: deployment
@@ -91,7 +91,7 @@ jobs:
         - cd $SERVICE_DIR
         - make depend
         - make deploy
-      if: branch = tag AND type != pull_request AND tag =~ /v\d+.\d+(.\d+)?/ AND commit_message !="deploy-to-aws"
+      if: branch = tag AND type != pull_request AND tag =~ /v\d+.\d+(.\d+)?/ AND commit_message !="deploy-to-aws" AND commit_message !="destroy-to-aws"
 
     - stage: deployment
       name: "♨️ Branch manual destroy AWS: Destroy changes in aws"
@@ -104,5 +104,5 @@ jobs:
         - set -e # Stop script immediately on error
         - cd $SERVICE_DIR
         - make depend
-        - make destroy-terraform
+        - make destroy
       if: commit_message ="destroy-to-aws" AND type != pull_request

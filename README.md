@@ -95,6 +95,14 @@ reawebrelease-elb-ingress   *       ac97d66b-default-reawebrel-8f71-1282660860.a
 reawebrelease-reaweb        *       10.0.148.82
 ```
 
+```
+kubectl get nodes
+NAME                                              STATUS   ROLES    AGE   VERSION
+ip-10-0-148-82.ap-southeast-2.compute.internal    Ready    <none>   42h   v1.16.8-eks-e16311
+ip-10-0-162-59.ap-southeast-2.compute.internal    Ready    <none>   16h   v1.16.8-eks-e16311
+ip-10-0-188-140.ap-southeast-2.compute.internal   Ready    <none>   42h   v1.16.8-eks-e16311
+```
+
 ## Reference
 
 1. https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/
