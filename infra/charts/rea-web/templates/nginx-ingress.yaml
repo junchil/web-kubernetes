@@ -21,4 +21,4 @@ spec:
       - path: /*
         backend:
           serviceName: {{ .Release.Name }}-nginx-controller
-          servicePort: 8080
+          servicePort: 80
