@@ -20,4 +20,4 @@ spec:
       - path: /*(/|$)(.*)
         backend:
           serviceName: {{ .Release.Name }}-reaweb
-          servicePort: 80
+          servicePort: 9292
