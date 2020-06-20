@@ -5,11 +5,58 @@
 
 Host web application inside EKS cluster using ALB + NGINX
 
+This repo builds a CICD pipeline for depolying a web application into EKS cluster. There is no manual task needed during this CICD process. The related travis build can be found through the build status.
+
 Table of Contents                                                                                                                       
-=================  
+============================================
+* [Directory Structure](#directory-structure)
+* [Set up](#set-up)
+* [EKS Cluster](#eks-cluster)
 * [Web Diagram](#web-diagram)
 * [Reference](#reference)
 * [To Do](#to-do)
+
+## Directory Structure
+
+```
+.
+├── app/
+|
+├── doc/
+|
+├── infra/
+|   ├── charts/
+|   |   └── rea-web/
+|   |    
+|   |── eks/
+|   |   ├── bastion-host/
+|   |   ├── cluster/
+|   |   ├── vpc/
+|   |   ├── main.tf
+|   |   ├── output.tf
+|   |   ├── provider.tf
+|   |   ├── variables.tf
+|   |   └── version.tf
+|   |── terraform-state/
+|   └── Makefile
+|
+├── ssh-key/
+|   
+├── testbox/
+|
+├── Makefile
+|   
+└── .travis.yml  
+```
+
+An overview of what each of these does:
+
+| File | Description |
+| -------- | ----------- |
+| `book.json` | Stores [configuration](config.md) data (__optional__) |
+| `README.md` | Preface / Introduction for your book (**required**) |
+| `SUMMARY.md` | Table of Contents (See [Pages](pages.md)) (__optional__) |
+| `GLOSSARY.md` | Lexicon / List of terms to annotate (See [Glossary](lexicon.md)) (__optional__) |
 
 ## Web Diagram
 
