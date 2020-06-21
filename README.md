@@ -23,7 +23,7 @@ Table of Contents
 
 ## EKS Cluster
 
-![diagram](doc/eks.png)
+![diagram](doc/eks_diagram.png)
 
 VPC:
 
