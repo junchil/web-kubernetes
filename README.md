@@ -33,6 +33,7 @@ VPC:
 * Bastion host sits in the public subnets.
 * Amazon [EKS](https://aws.amazon.com/eks/) is using both master subnets and worker subnets.
 * Kubernetes worker nodes sit in worker subnets.
+* For saving money, the terraform doesn't provide ASG for bastion host, and nat gateway in each AZs.
 
 ![diagram](doc/vpc.PNG)
 
